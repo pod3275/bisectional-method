@@ -3,6 +3,9 @@ import math as m
 
 # target function
 f = lambda x: x/30 - np.cos(x)
+MIN = -30
+MAX = 30
+sign_bit = 5
 
 # bisectional method
 def bisect(a, b):
@@ -19,8 +22,8 @@ def bisect(a, b):
             return 0, 0
         else:
             n = (a+b)/2
-            if round(n, 5) == round(a, 5) or round(n, 5) == round(b, 5):
-                return round(n, 5), 1
+            if round(n, sign_bit) == round(a, sign_bit) or round(n, sign_bit) == round(b, sign_bit):
+                return round(n, sign_bit), 1
             else:
                 if f(a)*f(n) < 0:
                     return bisect(a, n)
@@ -28,8 +31,8 @@ def bisect(a, b):
                     return bisect(n, b)
 
 if __name__ == '__main__':
-    min = -30
-    max = 30
+    min = MIN
+    max = MAX
     x = []
         
     i=0
